@@ -12,6 +12,9 @@ const UserSchema = new Schema({
     type: String,
     require: true
   },
+  email: {
+    type: String,
+  },
   token: {
     type: String
   }
@@ -39,5 +42,12 @@ UserSchema.pre('save',function (next) {
 });
 //校验用户输入密码是否正确
 UserSchema.methods.comparePassword = function (passw,cb) {
+  bcrypt.compare(passw,this.password,(err, isMatch)=>{
+    if (err){
+      return cb(err);
+    }
+    cb(null,isMatch);
+  })
+};
+module.exports = mongoose.model('User', UserSchema);
 
-}

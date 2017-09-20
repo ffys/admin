@@ -1,6 +1,6 @@
-# admin
+# core-ui
 
-> A Vue.js project
+> Open Source Admin Template
 
 ## Build Setup
 
