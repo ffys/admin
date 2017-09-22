@@ -7,6 +7,12 @@ import Full from '@/containers/Full'
 // Views
 import Dashboard from '@/views/Dashboard'
 
+// login
+import Login from '@/views/Login'
+
+// Register
+import Register from '@/views/Register'
+
 Vue.use(Router)
 
 export default new Router({
@@ -27,6 +33,16 @@ export default new Router({
         }
 
       ]
+    },
+    {
+      path: '/Login',
+      name: 'Login',
+      component: Login
+    },
+    {
+      path: '/Register',
+      name: 'Register',
+      component: Register
     }
   ]
 })

@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 
 const UserSchema = new Schema({
-  name: {
+ name: {
     type: String,
     unique: true, //不可重复约束
     require: true //不可为空约束
@@ -14,10 +14,15 @@ const UserSchema = new Schema({
   },
   email: {
     type: String,
+    require:true
+  },
+  phone: {
+   type: Number
   },
   token: {
     type: String
   }
+
 });
 
 //添加用户保存时中间件对password进行bcrypt加密，保证用户密码只有本人知道

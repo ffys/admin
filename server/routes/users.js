@@ -3,7 +3,6 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken'); //用来生成token
 const config = require('../config');
 const passport = require('passport'); //用户认证模块passport
-const util = require('util');
 const router = express.Router();
 
 
@@ -11,21 +10,20 @@ require('../passport')(passport);
 
 //注册账户
 router.post('/signup',(req,res) => {
-  console.log(req.body.name);
-  console.log(req.body.password);
   if(!req.body.name || !req.body.password){
     res.json({success: false, message: '请输入您的账号密码！'});
   }else{
     var newUser = new User({
       name: req.body.name,
       password: req.body.password,
-      email: req.body.email
+      email: req.body.email,
 
     });
     //保存用户账号
     newUser.save((err) => {
       if(err){
-        return res.json({success: false, message:'注册失败！'});
+        console.log(newUser);
+        return res.json({success: false, message:'注册失败！'+err});
       }
       res.json({success: true, message: '成功创建新用户！'});
     })
@@ -80,7 +78,7 @@ router.post('/user/accesstoken',(req,res) => {
 router.get('/users/info',
 passport.authenticate('bearer',{session: false}),
   function (req, res) {
-    res.json({username: req.user.name});
+    res.json({usernae: req.user.name});
   }
 );
 
