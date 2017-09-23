@@ -8,11 +8,16 @@
         <div class="col-md-6">
           <div class="card mx-4">
             <div class="card-body p-4">
+              <div class="alert alert-danger" :class="{alertshow: true}">
+                This is a warning alert—check it out!
+              </div>
+
               <h1 class="text-center p-4">会员注册</h1>
               <div class="input-group mb-3">
                 <span class="input-group-addon"><i class="icon-user"></i></span>
                 <input type="text" class="form-control" placeholder="用户名" v-model="user.name">
               </div>
+
               <div class="input-group mb-3">
                 <span class="input-group-addon">@</span>
                 <input type="text" class="form-control" placeholder="邮箱" v-model="user.email">
@@ -47,6 +52,7 @@ export default {
   data () {
     return {
       loginimg: '/static/img/login/login (2).jpg',
+      'alertshow': true,
       user: {
         name: '',
         email: '',
@@ -84,6 +90,16 @@ export default {
     img{
       width: 100%;
       height: 100%;
+    }
+    .card-body{
+      color:#fff;
+    }
+    .card-body .alert-danger{
+      display: none;
+    }
+    .alertshow{
+      display: block;
+      color: #00a67c;
     }
 
   }
